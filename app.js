@@ -153,5 +153,4 @@ generateBtn.addEventListener('click', (e) => {
 roundsBtn.addEventListener('click', (e) => {
 	e.preventDefault();
 	const rounds = roundsNum.value;
-	console.log(rounds);
 });

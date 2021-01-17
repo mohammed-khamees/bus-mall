@@ -281,20 +281,6 @@ input::placeholder {
 	color: var(--thirdColor);
 }
 
-.info {
-	max-width: 992px;
-	margin-top: 2rem;
-	background-color: var(--secondColor);
-	padding: 1rem 2rem;
-	border-radius: 2rem;
-	font-size: 1rem;
-	color: var(--forthColor);
-	letter-spacing: 0.1rem;
-	line-height: 2.2rem;
-	text-align: center;
-	text-indent: 2rem;
-}
-
 .btn {
 	font-size: 1.5rem;
 	width: 90%;
