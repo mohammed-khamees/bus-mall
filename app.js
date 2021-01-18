@@ -83,12 +83,18 @@ const products = [
 	},
 ];
 
+const images = document.querySelector('.images');
 const imgContainer = document.querySelector('.img-container');
 const generateBtn = document.querySelector('.generate-btn');
 const roundsNum = document.getElementById('rounds');
 const roundsBtn = document.querySelector('.rounds-btn');
 const results = document.querySelector('.results');
 const resultList = document.querySelector('.result-list');
+const viewText = document.querySelector('.view-times');
+const warnText = document.querySelector('.warn-text');
+
+let viewedNum = 25;
+let viewTimes = 0;
 
 const randomImage = () => {
 	return Math.floor(Math.random() * products.length);
@@ -105,37 +111,43 @@ const listItem = () => {
 };
 
 const imageShown = () => {
-	let index = [];
-	let image = randomImage();
-	while (index.length < 3) {
-		if (!index.includes(image)) index.push(image);
-		image = randomImage();
-	}
+	if (viewTimes < viewedNum) {
+		viewTimes++;
+		let index = [];
+		let image = randomImage();
+		while (index.length < 3) {
+			if (!index.includes(image)) index.push(image);
+			image = randomImage();
+		}
 
-	for (let i = 0; i < index.length; i++) {
-		products[index[i]].shownTimes++;
-		imgContainer.innerHTML += `<div class='single-img'>
-                        <h4 class='product-name'>${products[index[i]].name}</h4>
-                        <img src=${products[index[i]].src} alt=${
-			products[index[i]].name
-		} class='product-img'>
-                        <button class='btn' data-id=${
-													products[index[i]].id
-												}><i class="far fa-heart"></i> Vote</button>
-                    </div>`;
-	}
-	const voteBtns = document.querySelectorAll('.btn');
-	voteBtns.forEach((btn) => {
-		btn.addEventListener('click', (e) => {
-			const id = e.target.dataset.id;
-			products[id - 1].clicked++;
-			imgContainer.innerHTML = '';
-			results.classList.add('results-show');
-			imageShown();
-			resultList.innerHTML = '';
-			listItem();
+		for (let i = 0; i < index.length; i++) {
+			products[index[i]].shownTimes++;
+			imgContainer.innerHTML += `<div class='single-img'>
+							<h4 class='product-name'>${products[index[i]].name}</h4>
+							<img src=${products[index[i]].src} alt=${
+				products[index[i]].name
+			} class='product-img'>
+							<button class='btn' data-id=${
+								products[index[i]].id
+							}><i class="far fa-heart"></i> Vote</button>
+						</div>`;
+		}
+		const voteBtns = document.querySelectorAll('.btn');
+		voteBtns.forEach((btn) => {
+			btn.addEventListener('click', (e) => {
+				const id = e.target.dataset.id;
+				products[id - 1].clicked++;
+				imgContainer.innerHTML = '';
+				results.classList.add('results-show');
+				imageShown();
+				resultList.innerHTML = '';
+				listItem();
+			});
 		});
-	});
+	} else {
+		images.classList.add('hide');
+		viewText.classList.remove('hide');
+	}
 };
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -153,4 +165,10 @@ generateBtn.addEventListener('click', (e) => {
 roundsBtn.addEventListener('click', (e) => {
 	e.preventDefault();
 	const rounds = roundsNum.value;
+	if (rounds > 25) {
+		warnText.textContent = 'please your number must be between 0 - 25.';
+	} else {
+		warnText.textContent = '';
+		viewedNum = rounds;
+	}
 });

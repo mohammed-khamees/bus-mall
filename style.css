@@ -161,6 +161,10 @@ input::placeholder {
 	display: block;
 }
 
+.hide {
+	display: none;
+}
+
 .result-list {
 	max-width: 100%;
 	list-style: none;
@@ -208,6 +212,12 @@ input::placeholder {
 		align-self: flex-start;
 		margin-left: 1rem;
 	}
+}
+
+.view-times {
+	flex: 0 0 calc(100% - 4rem);
+	align-self: flex-start;
+	text-align: center;
 }
 
 .images {
@@ -343,6 +353,24 @@ input::placeholder {
 	.btn {
 		font-size: 0.5rem;
 		padding: 0.5rem 1rem;
+	}
+}
+
+.warn-text {
+	color: var(--thirdColor);
+	transition: var(--mainTrasition);
+	animation: lighting 2s infinite;
+}
+
+@keyframes lighting {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.2);
+	}
+	75% {
+		transform: scale(1);
 	}
 }
 
