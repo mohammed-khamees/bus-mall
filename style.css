@@ -66,8 +66,7 @@ header {
 
 @keyframes slideFromRight {
 	0% {
-		transform: translateX(2000px);
-		display: none;
+		transform: translateX(400px);
 	}
 	100% {
 		transform: translateX(-2000px);
@@ -91,6 +90,7 @@ main {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
+	position: relative;
 }
 
 form {
@@ -186,6 +186,11 @@ input::placeholder {
 	color: var(--forthColor);
 	padding: 1rem 1rem 1rem 0.7rem;
 	font-size: 0.8rem;
+	transition: var(--mainTrasition);
+}
+
+.list-item:hover {
+	background-color: transparent;
 }
 
 .even {
@@ -197,6 +202,34 @@ input::placeholder {
 .odd {
 	background-color: var(--secondColor);
 	border-bottom: 1px solid var(--thirdColor);
+	transition: var(--mainTrasition);
+}
+
+.odd:hover {
+	color: var(--mainColor);
+}
+
+.show-img {
+	width: 10rem;
+	height: 10.5rem;
+	position: absolute;
+	top: 5%;
+	left: 50%;
+	display: none;
+	transition: var(--mainTrasition);
+	border: 1px solid var(--thirdColor);
+	transform: translateX(-50%);
+}
+
+.show-img img {
+	width: 100%;
+	height: 100%;
+}
+
+.list-item:hover .show-img {
+	background-color: transparent;
+	display: block;
+	z-index: 10;
 }
 
 .images {
@@ -326,6 +359,7 @@ input::placeholder {
 
 .again:hover .again-btn {
 	color: var(--thirdColor);
+	transform: scale(1.2);
 }
 
 .again-btn {
@@ -552,6 +586,10 @@ footer {
 
 	.warn-text {
 		font-size: 0.7rem;
+	}
+
+	.list-item {
+		flex: 1 0 calc(50% - 1rem);
 	}
 
 	/* end of main style */

@@ -112,9 +112,9 @@ const randomImage = () => {
 const listItem = () => {
 	for (let i = 0; i < products.length; i++) {
 		if (i % 2 === 0) {
-			resultList.innerHTML += `<li class="list-item even">${products[i].name}: ${products[i].clicked} votes, views ${products[i].shownTimes} times. </li>`;
+			resultList.innerHTML += `<li class="list-item even">${products[i].name}: ${products[i].clicked} votes, views ${products[i].shownTimes} times.<span class='show-img'><img src=${products[i].src} alt=${products[i].name}></span> </li>`;
 		} else {
-			resultList.innerHTML += `<li class="list-item odd">${products[i].name}: ${products[i].clicked} votes, views ${products[i].shownTimes} times. </li>`;
+			resultList.innerHTML += `<li class="list-item odd">${products[i].name}: ${products[i].clicked} votes, views ${products[i].shownTimes} times.<span class='show-img'><img src=${products[i].src} alt=${products[i].name}></span> </li>`;
 		}
 	}
 };
@@ -162,9 +162,9 @@ const imageShown = () => {
 		images.classList.add('hide');
 		generateBtn.classList.add('hide');
 		roundsContanier.classList.add('hide');
+		results.classList.add('results-show');
 		myChart.classList.remove('hide');
 		again.classList.remove('hide');
-		results.classList.add('results-show');
 		for (let index = 0; index < products.length; index++) {
 			productsName.push(products[index].name);
 			views.push(products[index].shownTimes);
