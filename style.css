@@ -50,31 +50,6 @@ header {
 	color: var(--forthColor);
 }
 
-@media screen and (max-width: 768px) {
-	.header-img {
-		width: 4rem;
-		height: 4.5rem;
-	}
-
-	.header-title {
-		font-size: 1.3rem;
-	}
-}
-
-@media screen and (max-width: 320px) {
-	header {
-		height: 70px;
-		background-color: var(--forthColor);
-	}
-	.header-img {
-		width: 3rem;
-		height: 3.5rem;
-	}
-
-	.header-title {
-		font-size: 1rem;
-	}
-}
 /* end of header style */
 
 /* main style */
@@ -192,28 +167,6 @@ input::placeholder {
 	border-bottom: 1px solid var(--thirdColor);
 }
 
-@media screen and (max-width: 768px) {
-	.results {
-		min-width: 70%;
-		order: 2;
-	}
-	.result-list {
-		align-self: flex-start;
-		margin-left: 3rem;
-	}
-}
-
-@media screen and (max-width: 320px) {
-	.results {
-		min-width: 80%;
-		font-size: 0.5rem;
-	}
-	.result-list {
-		align-self: flex-start;
-		margin-left: 1rem;
-	}
-}
-
 .view-times {
 	flex: 0 0 calc(100% - 4rem);
 	align-self: flex-start;
@@ -245,7 +198,7 @@ input::placeholder {
 	border: 2px solid var(--secondColor);
 	margin: 1rem 0.5rem;
 	padding: 0.5rem 1rem 2rem;
-	width: 30%;
+	width: 30rem;
 	border-radius: 0.5rem;
 	background-color: var(--mainColor);
 	transition: var(--mainTrasition);
@@ -312,50 +265,6 @@ input::placeholder {
 	color: var(--thirdColor);
 }
 
-@media screen and (max-width: 768px) {
-	.img-container {
-		flex-wrap: wrap;
-	}
-
-	.product-img {
-		width: 90%;
-		height: 15rem;
-	}
-
-	.info {
-		width: 95%;
-		margin: 2rem auto;
-	}
-
-	.btn {
-		font-size: 1.2rem;
-		padding: 1rem;
-	}
-}
-
-@media screen and (max-width: 320px) {
-	.single-img {
-		width: 100%;
-		margin: 1rem;
-		padding: 1rem 0.5rem;
-	}
-
-	.product-img {
-		width: 90%;
-		height: 5rem;
-	}
-
-	.info {
-		width: 90%;
-		margin: 2rem auto;
-	}
-
-	.btn {
-		font-size: 0.5rem;
-		padding: 0.5rem 1rem;
-	}
-}
-
 .warn-text {
 	color: var(--thirdColor);
 	transition: var(--mainTrasition);
@@ -401,21 +310,4 @@ footer {
 	font-size: 2rem;
 }
 
-@media screen and (max-width: 768px) {
-	footer {
-		font-size: 1rem;
-	}
-	.copy {
-		font-size: 1.5rem;
-	}
-}
-
-@media screen and (max-width: 320px) {
-	footer {
-		font-size: 0.5rem;
-	}
-	.copy {
-		font-size: 1rem;
-	}
-}
 /* end of footer style */
