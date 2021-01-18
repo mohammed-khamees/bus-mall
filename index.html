@@ -29,7 +29,7 @@
         </header>
         <main>
             <article class="images">
-                <form>
+                <form class='rounds-num-container'>
                     <label for="rounds">Number Of rounds</label>
                     <input type="number" name="rounds" id="rounds" placeholder="Number Of rounds">
                     <button class="rounds-btn">Submit</button>
@@ -37,14 +37,19 @@
                 <h3 class="warn-text"></h3>
                 <div class="img-container"></div>
                 <button class="generate-btn">generate</button>
-
                 <article class="results">
                     <ul class="result-list">
 
                     </ul>
                 </article>
+
+
+                <canvas id='myChart' class="hide"></canvas>
+                <div class="again hide">
+                    <button class="again-btn"><i class="fas fa-undo-alt"></i></button>
+                    <h4>Try Again</h4>
+                </div>
             </article>
-            <div class="view-times hide">I'm sorry your attempts are finished.</div>
         </main>
         <footer>
             <div class="content">
@@ -52,6 +57,9 @@
                 <span class="copy">&copy;</span>
             </div>
         </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+            crossorigin="anonymous"></script>
         <script src="app.js"></script>
     </body>
 

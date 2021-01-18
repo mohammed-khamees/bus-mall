@@ -83,19 +83,27 @@ const products = [
 	},
 ];
 
+const productsName = [];
+const views = [];
+const votes = [];
+
 const logoContainer = document.querySelector('.logo-container');
 const images = document.querySelector('.images');
 const imgContainer = document.querySelector('.img-container');
 const generateBtn = document.querySelector('.generate-btn');
 const roundsNum = document.getElementById('rounds');
 const roundsBtn = document.querySelector('.rounds-btn');
+const roundsContanier = document.querySelector('.rounds-num-container');
 const results = document.querySelector('.results');
 const resultList = document.querySelector('.result-list');
-const viewText = document.querySelector('.view-times');
 const warnText = document.querySelector('.warn-text');
+const chart = document.getElementById('myChart').getContext('2d');
+const myChart = document.getElementById('myChart');
+const again = document.querySelector('.again');
 
 let viewedNum = 25;
 let viewTimes = 0;
+let imagesViewed = [];
 
 const randomImage = () => {
 	return Math.floor(Math.random() * products.length);
@@ -117,9 +125,13 @@ const imageShown = () => {
 		let index = [];
 		let image = randomImage();
 		while (index.length < 3) {
+			while (imagesViewed.includes(image)) {
+				image = randomImage();
+			}
 			if (!index.includes(image)) index.push(image);
 			image = randomImage();
 		}
+		imagesViewed = [...index];
 
 		for (let i = 0; i < index.length; i++) {
 			products[index[i]].shownTimes++;
@@ -133,13 +145,14 @@ const imageShown = () => {
 							}><i class="far fa-heart"></i> Vote</button>
 						</div>`;
 		}
+
 		const voteBtns = document.querySelectorAll('.btn');
 		voteBtns.forEach((btn) => {
 			btn.addEventListener('click', (e) => {
-				const id = e.target.dataset.id;
+				const id = e.currentTarget.dataset.id;
 				products[id - 1].clicked++;
 				imgContainer.innerHTML = '';
-				results.classList.add('results-show');
+				imgContainer.classList.add('up');
 				imageShown();
 				resultList.innerHTML = '';
 				listItem();
@@ -147,11 +160,47 @@ const imageShown = () => {
 		});
 	} else {
 		images.classList.add('hide');
-		viewText.classList.remove('hide');
+		generateBtn.classList.add('hide');
+		roundsContanier.classList.add('hide');
+		myChart.classList.remove('hide');
+		again.classList.remove('hide');
+		results.classList.add('results-show');
+		for (let index = 0; index < products.length; index++) {
+			productsName.push(products[index].name);
+			views.push(products[index].shownTimes);
+			votes.push(products[index].clicked);
+		}
+
+		let productChart = new Chart(chart, {
+			type: 'bar',
+			data: {
+				labels: productsName,
+				datasets: [
+					{
+						label: 'views',
+						data: views,
+						backgroundColor: '#00adb5',
+						borderWidth: 2,
+						borderColor: '#00adb5',
+						hoverBorderColor: '#222831',
+					},
+					{
+						label: 'votes',
+						data: votes,
+						backgroundColor: '#222831',
+						borderWidth: 2,
+						borderColor: '#222831',
+						hoverBorderColor: '#00adb5',
+					},
+				],
+			},
+			options: {},
+		});
 	}
 };
 
 window.addEventListener('DOMContentLoaded', () => {
+	imagesViewed = [];
 	imageShown();
 });
 
@@ -160,6 +209,7 @@ generateBtn.addEventListener('click', (e) => {
 	imgContainer.innerHTML = '';
 	imageShown();
 	resultList.innerHTML = '';
+	imgContainer.classList.add('up');
 	listItem();
 });
 
@@ -174,6 +224,15 @@ roundsBtn.addEventListener('click', (e) => {
 	}
 });
 
+again.addEventListener('click', () => {
+	location.reload();
+});
+
 setInterval(() => {
 	logoContainer.style.opacity = 1;
-}, 3800);
+	imgContainer.classList.remove('up');
+}, 3900);
+
+setInterval(() => {
+	imgContainer.classList.remove('up');
+}, 1300);
