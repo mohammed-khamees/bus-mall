@@ -83,6 +83,7 @@ const products = [
 	},
 ];
 
+const logoContainer = document.querySelector('.logo-container');
 const images = document.querySelector('.images');
 const imgContainer = document.querySelector('.img-container');
 const generateBtn = document.querySelector('.generate-btn');
@@ -172,3 +173,7 @@ roundsBtn.addEventListener('click', (e) => {
 		viewedNum = rounds;
 	}
 });
+
+setInterval(() => {
+	logoContainer.style.opacity = 1;
+}, 3800);
