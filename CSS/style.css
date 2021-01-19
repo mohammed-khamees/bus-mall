@@ -501,6 +501,13 @@ footer {
 		padding: 0.5rem;
 	}
 
+	.results-btn-prev,
+	.results-btn-new {
+		font-size: 0.8rem;
+		width: 15rem;
+		padding: 0.5rem;
+	}
+
 	form {
 		padding: 0.8rem 0;
 		width: 18rem;
