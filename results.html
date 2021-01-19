@@ -14,7 +14,7 @@
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Yusei+Magic&display=swap"
             rel="stylesheet">
         <!-- style -->
-        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="CSS/results.css">
 
         <script src="https://kit.fontawesome.com/a24ea374e8.js" crossorigin="anonymous"></script>
     </head>
@@ -29,18 +29,15 @@
         </header>
         <main>
             <article class="images">
-                <form class='rounds-num-container'>
-                    <label for="rounds">Number Of rounds</label>
-                    <input type="number" name="rounds" id="rounds" placeholder="Number Of rounds">
-                    <button class="rounds-btn">Submit</button>
-                </form>
-                <h3 class="warn-text"></h3>
-                <div class="img-container"></div>
-                <button class="generate-btn">generate</button>
-                <a href="results.html" class="results-btn-prev">Show previous results</a>
-                <a href="results.html" class="results-btn-new hide">Show results</a>
-                <div class="again hide">
-                    <button class="again-btn"><i class="fas fa-undo-alt"></i></button>
+                <article class="results">
+                    <ul class="result-list">
+                    </ul>
+                </article>
+
+
+                <canvas id='myChartResults'></canvas>
+                <div class="again">
+                    <a href="index.html" class="again-btn"><i class="fas fa-undo-alt"></i></a>
                     <h4>Try Again</h4>
                 </div>
             </article>
@@ -51,7 +48,10 @@
                 <span class="copy">&copy;</span>
             </div>
         </footer>
-        <script src="JS/app.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+            integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+            crossorigin="anonymous"></script>
+        <script src="JS/results.js"></script>
     </body>
 
 </html>
