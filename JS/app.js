@@ -91,14 +91,12 @@ const logoContainer = document.querySelector('.logo-container');
 const images = document.querySelector('.images');
 const imgContainer = document.querySelector('.img-container');
 const generateBtn = document.querySelector('.generate-btn');
+const resultsBtnPrev = document.querySelector('.results-btn-prev');
+const resultsBtnNew = document.querySelector('.results-btn-new');
 const roundsNum = document.getElementById('rounds');
 const roundsBtn = document.querySelector('.rounds-btn');
 const roundsContanier = document.querySelector('.rounds-num-container');
-const results = document.querySelector('.results');
-const resultList = document.querySelector('.result-list');
 const warnText = document.querySelector('.warn-text');
-const chart = document.getElementById('myChart').getContext('2d');
-const myChart = document.getElementById('myChart');
 const again = document.querySelector('.again');
 
 let viewedNum = 25;
@@ -107,16 +105,6 @@ let imagesViewed = [];
 
 const randomImage = () => {
 	return Math.floor(Math.random() * products.length);
-};
-
-const listItem = () => {
-	for (let i = 0; i < products.length; i++) {
-		if (i % 2 === 0) {
-			resultList.innerHTML += `<li class="list-item even">${products[i].name}: ${products[i].clicked} votes, views ${products[i].shownTimes} times.<span class='show-img'><img src=${products[i].src} alt=${products[i].name}></span> </li>`;
-		} else {
-			resultList.innerHTML += `<li class="list-item odd">${products[i].name}: ${products[i].clicked} votes, views ${products[i].shownTimes} times.<span class='show-img'><img src=${products[i].src} alt=${products[i].name}></span> </li>`;
-		}
-	}
 };
 
 const imageShown = () => {
@@ -154,48 +142,20 @@ const imageShown = () => {
 				imgContainer.innerHTML = '';
 				imgContainer.classList.add('up');
 				imageShown();
-				resultList.innerHTML = '';
-				listItem();
 			});
 		});
 	} else {
-		images.classList.add('hide');
-		generateBtn.classList.add('hide');
-		roundsContanier.classList.add('hide');
-		results.classList.add('results-show');
-		myChart.classList.remove('hide');
-		again.classList.remove('hide');
+		localStorage.setItem('products', JSON.stringify(products));
 		for (let index = 0; index < products.length; index++) {
 			productsName.push(products[index].name);
 			views.push(products[index].shownTimes);
 			votes.push(products[index].clicked);
 		}
-
-		let productChart = new Chart(chart, {
-			type: 'bar',
-			data: {
-				labels: productsName,
-				datasets: [
-					{
-						label: 'views',
-						data: views,
-						backgroundColor: '#00adb5',
-						borderWidth: 2,
-						borderColor: '#00adb5',
-						hoverBorderColor: '#222831',
-					},
-					{
-						label: 'votes',
-						data: votes,
-						backgroundColor: '#222831',
-						borderWidth: 2,
-						borderColor: '#222831',
-						hoverBorderColor: '#00adb5',
-					},
-				],
-			},
-			options: {},
-		});
+		imgContainer.classList.add('hide');
+		generateBtn.classList.add('hide');
+		resultsBtnPrev.classList.add('hide');
+		resultsBtnNew.classList.remove('hide');
+		again.classList.remove('hide');
 	}
 };
 
@@ -208,9 +168,7 @@ generateBtn.addEventListener('click', (e) => {
 	e.preventDefault();
 	imgContainer.innerHTML = '';
 	imageShown();
-	resultList.innerHTML = '';
 	imgContainer.classList.add('up');
-	listItem();
 });
 
 roundsBtn.addEventListener('click', (e) => {
